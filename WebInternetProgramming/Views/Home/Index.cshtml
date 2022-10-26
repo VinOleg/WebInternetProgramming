@@ -1,8 +1,20 @@
-﻿@{
+﻿@model WebInternetProgramming.Models.ViewModel.IndexViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
+<div class="alert alert-light" role="alert">
+    @TempData["message"]
+</div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="row">
+    @foreach (var item in Model.indexCheckList)
+    {
+        <div class="col-6 col-sm-6 col-lg-4">
+            <h3>@item.Name</h3>
+            <p>@item.Desc</p>
+            <p><a class="btn btn-default" asp-route-id=@item.Id 
+                  asp-controller="shop" asp-action="indexbuy" role="button">купить услугу»</a></p>
+        </div>
+    }
 </div>
